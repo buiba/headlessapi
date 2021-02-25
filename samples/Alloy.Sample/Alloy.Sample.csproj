@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <Import Project="$(BuildDirectory)public.props" />
+  <Import Project="$(BuildDirectory)website.props" />
+
+  <PropertyGroup>
+    <NuspecFile>Alloy.Sample.ContentApi.nuspec</NuspecFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPiServer.CMS.UI.AspNetIdentity" />
+    <PackageReference Include="EPiServer.CMS.TinyMce" />
+    <PackageReference Include="EPiServer.ServiceLocation.StructureMap" />
+    <PackageReference Include="Microsoft.AspNet.Providers.Core" />
+    <PackageReference Include="Microsoft.AspNet.Web.Optimization" />
+    <PackageReference Include="Microsoft.Owin.Security.Cookies" />
+    <PackageReference Include="Microsoft.Owin.Security.OAuth" />
+    <PackageReference Include="Microsoft.Owin.Security" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\EPiServer.ContentApi.Cms\EPiServer.ContentApi.Cms.csproj" />
+    <ProjectReference Include="..\..\src\EPiServer.ContentApi.OAuth.UI\EPiServer.ContentApi.OAuth.UI.csproj" />
+    <ProjectReference Include="..\..\src\EPiServer.ContentApi.Routing\EPiServer.ContentApi.Routing.csproj" />
+    <ProjectReference Include="..\..\src\EPiServer.ContentApi.Search\EPiServer.ContentApi.Search.csproj" />
+    <ProjectReference Include="..\..\src\EPiServer.ContentManagementApi\EPiServer.ContentManagementApi.csproj" />
+  </ItemGroup>
+
+</Project>

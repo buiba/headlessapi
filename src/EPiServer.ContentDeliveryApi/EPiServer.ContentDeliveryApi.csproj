@@ -1,0 +1,8 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(BuildDirectory)public.props" />
+  
+  <PropertyGroup>
+    <NuspecFile>EPiServer.ContentDeliveryApi.nuspec</NuspecFile>
+  </PropertyGroup>
+
+</Project>

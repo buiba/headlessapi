@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>EPiServer.ContentApi.Cors.Internal</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPiServer.CMS.Core" />
+    <PackageReference Include="Microsoft.AspNet.WebApi" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Cors" />
+  </ItemGroup>
+
+</Project>

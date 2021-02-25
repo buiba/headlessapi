@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modifications>
+    <add path="configuration/episerver.framework/virtualRoles/providers">
+        <add __keyAttributes="name" name="EPiBetaUsers" type="EPiServer.Security.AuthenticatedRole, EPiServer.Framework" />
+    </add>
+     <add path="configuration/episerver.framework">
+        <licensing licenseFilePath="C:\DailySiteItems\License.config" />
+    </add>
+    <setAttribute path="configuration/episerver.framework/appData"
+                  attributeName="basePath"
+                  attributeValue="{basePath}" />
+    <setAttribute path="configuration/episerver.framework/clientResources"
+                  attributeName="debug"
+                  attributeValue="false" />
+    <remove path="configuration/system.webServer/aspNetCore"/>
+</modifications>

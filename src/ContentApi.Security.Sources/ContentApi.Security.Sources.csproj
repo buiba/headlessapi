@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>EPiServer.ContentApi.Security.Internal</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPiServer.CMS.Core" />
+    <PackageReference Include="Microsoft.AspNet.WebApi" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+      <id>Alloy.ContentDelivery.cms.app</id>
+      <version>$version$</version>
+      <title>Alloy.Sample.ContentApi</title>
+      <authors>Episerver AB</authors>
+      <owners>Episerver</owners>
+      <licenseUrl>http://www.episerver.com/eula/</licenseUrl>
+      <iconUrl>http://www.episerver.com/Framework/Styles/Images/Products/Integration.png</iconUrl>
+      <requireLicenseAcceptance>false</requireLicenseAcceptance>
+      <summary>Alloy.Sample.ContentApi</summary>
+      <copyright>Copyright Episerver 2018</copyright>
+      <tags>Alloy.Sample.ContentApi</tags>
+      <description>Alloy.Sample.ContentApi</description>
+  </metadata>
+    
+  <files>
+      <file src="..\..\build\database\DefaultSiteContent.episerverdata" target="wwwroot\App_Data"/>
+      <file src="..\..\build\database\EPiServerDB.mdf" target="wwwroot\App_Data"/>
+      <file src="..\..\build\database\ProvisionDatabase.cs" target="wwwroot\App_Code"/>
+      <file src="..\..\build\transforms\Alloy.Sample.ContentApi.web.config.transform" target="setup"/>
+      <file src="..\..\src\EPiServer.ContentApi.Cms\bin\$Configuration$\EPiServer.ContentApi.Cms.dll" target="wwwroot\bin" />
+      <file src="..\..\src\EPiServer.ContentApi.Core\bin\$Configuration$\EPiServer.ContentApi.Core.dll" target="wwwroot\bin" />
+      <file src="..\..\src\EPiServer.ContentApi.OAuth\bin\$Configuration$\EPiServer.ContentApi.OAuth.dll" target="wwwroot\bin" />
+      <file src="..\..\src\EPiServer.ContentApi.OAuth.UI\bin\$Configuration$\EPiServer.ContentApi.OAuth.UI.dll" target="wwwroot\bin" />
+      <file src="..\..\src\EPiServer.ContentApi.Routing\bin\$Configuration$\EPiServer.ContentApi.Routing.dll" target="wwwroot\bin" />
+      <file src="..\..\src\EPiServer.ContentApi.Search\bin\$Configuration$\EPiServer.ContentApi.Search.dll" target="wwwroot\bin" />
+      <file src="..\..\src\EPiServer.ContentApi.OAuth.UI\lang\EPiServer.ContentApi.OAuth.UI_en.xml" target="wwwroot\Resources\LanguageFiles\" />
+      <file src="bin\*.*" target="wwwroot\bin" exclude="bin\EPiServer.ContentApi.*"/>
+      <file src="ClientResources\**\*.*" target="wwwroot\ClientResources" />
+      <file src="Resources\**\*.*" target="wwwroot\Resources" exclude ="Resources\LanguageFiles\EPiServer.ContentApi.OAuth.UI_en.xml"/>
+      <file src="Static\**\*.*" target="wwwroot\Static" />
+      <file src="Views\**\*.*" target="wwwroot\Views" />
+      <file src="modules\**\*.*" target="wwwroot\modules" exclude ="modules\**\EPiServer.ContentApi.OAuth.UI_en.xml" />
+      <file src="*.config" target="wwwroot" exclude="license.config"/>
+      <file src="*.asax" target="wwwroot"/>
+      <file src="*.ico" target="wwwroot"/>
+  </files>
+</package>

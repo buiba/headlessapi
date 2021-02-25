@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>EPiServer.ContentManagementApi</id>
+    <version>$version$</version>
+    <title>EPiServer.ContentManagementApi</title>
+    <authors>Episerver AB</authors>
+    <owners>Episerver</owners>
+    <licenseUrl>http://www.episerver.com/eula/</licenseUrl>
+    <iconUrl>http://www.episerver.com/Framework/Styles/Images/Products/Integration.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <summary>Episerver Content Management API</summary>
+    <copyright>Copyright Episerver 2020</copyright>
+    <tags>Episerver ContentManagementAPI</tags>
+    <description>REST API for managing content in Episerver</description>
+    <dependencies>
+      <group targetFramework="$TargetFramework$">
+	      <dependency id="EPiServer.ContentDeliveryApi.Core" version="[2.17.9999, 3)" />
+        <dependency id="Microsoft.AspNet.WebApi.WebHost" version="[5.2.3, 6.0)" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\$configuration$\EPiServer.ContentManagementApi.dll" target="lib\net461\" />
+    <file src="bin\$configuration$\EPiServer.ContentManagementApi.xml" target="lib\net461\" />
+  </files>
+</package>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>EPiServer.ContentDeliveryApi.Core</id>
+    <version>$version$</version>
+    <title>EPiServer.ContentDeliveryApi.Core</title>
+    <authors>Episerver AB</authors>
+    <owners>Episerver</owners>
+    <licenseUrl>http://www.episerver.com/eula/</licenseUrl>
+    <iconUrl>http://www.episerver.com/Framework/Styles/Images/Products/Integration.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <summary>Episerver Content Delivery Core</summary>
+    <copyright>Copyright Episerver 2018</copyright>
+    <tags>Episerver Content Delivery Core</tags>
+    <description>Episerver Content Delivery Core</description>
+    <dependencies>
+      <group targetFramework="$TargetFramework$">
+        <dependency id="EPiServer.CMS.UI.Core" version="[11.25.0, 12)" />
+        <dependency id="EPiServer.CMS.AspNet" version="[11.19.0, 12)" />
+        <dependency id="Microsoft.AspNet.WebApi.Cors" version="[5.2.3,6)" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\$configuration$\EPiServer.ContentApi.Core.dll" target="lib\net461\" />
+    <file src="bin\$configuration$\EPiServer.ContentApi.Core.xml" target="lib\net461\" />
+  </files>
+</package>

@@ -1,0 +1,18 @@
+{
+  "name": "headlessapi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "build:setversion": "gulp set-version",
+    "pack": "gulp nuget"
+  },
+  "devDependencies": {
+    "commander": "^2.19.0",
+    "gulp": "^4.0.2",
+    "gulp-dotnet-cli": "^1.1.0",
+    "gulp-util": "^3.0.8",
+    "teamcity-service-messages": "^0.1.9",
+    "xmlpoke": "^0.1.16"
+  }
+}

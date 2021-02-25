@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\EPiServer.ContentApi.IntegrationTests.Setup\EPiServer.ContentApi.IntegrationTests.Setup.projitems" Label="Shared" />
+
+  <ItemGroup>
+    <PackageReference Include="EPiServer.Cms.AspNet" />
+    <PackageReference Include="FluentAssertions" />
+    <PackageReference Include="FluentAssertions.Json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\EPiServer.ContentManagementApi\EPiServer.ContentManagementApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App.config" CopyToOutputDirectory="Always" />
+  </ItemGroup>
+
+</Project>

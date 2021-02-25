@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(BuildDirectory)public.props" />
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="lang\EPiServer.ContentApi.OAuth.UI_en.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EPiServer.ContentApi.OAuth\EPiServer.ContentApi.OAuth.csproj" />
+  </ItemGroup>
+</Project>

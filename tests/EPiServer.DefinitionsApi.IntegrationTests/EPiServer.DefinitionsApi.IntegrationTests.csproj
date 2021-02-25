@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\EPiServer.ContentApi.IntegrationTests.Setup\EPiServer.ContentApi.IntegrationTests.Setup.projitems" Label="Shared" />
+
+  <PropertyGroup>
+    <NewtonsoftJsonVersion>11.0.2</NewtonsoftJsonVersion>
+  </PropertyGroup>
+    
+  <ItemGroup>
+    <PackageReference Include="EPiServer.CMS.AspNet" />
+    <PackageReference Include="FluentAssertions" />
+    <PackageReference Include="FluentAssertions.Json" />
+    <PackageReference Include="Newtonsoft.Json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\EPiServer.DefinitionsApi\EPiServer.DefinitionsApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App.config" CopyToOutputDirectory="Always" />
+  </ItemGroup>
+
+</Project>

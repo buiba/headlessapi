@@ -1,0 +1,362 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "v1",
+    "title": "Content Type Management API"
+  },
+  "paths": {
+    "/api/contentmanagement/v1/contenttypes": {
+      "get": {
+        "description": "Returns all content types in the system.",
+        "operationId": "List",
+        "parameters": [
+          {
+            "name": "top",
+            "description": "Max number of content types that should be returned in one request. Must not be used together with the 'x-epi-continuation' header.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "x-epi-continuation",
+            "description": "Token describing which content types that should be retrieved. Must not be used together with the 'top' parameter.",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of content types",
+            "headers": {
+              "x-epi-continuation": {
+                "description": "Token representing the next set of content types",
+                "schema": { "type": "string" }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/contentType"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Create a new content type",
+        "operationId": "Create",
+        "requestBody": {
+          "description": "The content type that should be created",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/contentType"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The content type was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/contentType"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "409": {
+            "description": "There is already a content type with the provided id."
+          }
+
+        }
+      }
+    },
+    "/api/contentmanagement/v1/contenttypes/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "description": "The content type identifier",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      ],
+      "get": {
+        "description": "Get an individual content type",
+        "operationId": "Get",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/contentType"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+
+        }
+      },
+      "put": {
+        "description": "Create or update an individual content type",
+        "operationId": "Save",
+        "parameters": [
+          {
+            "name": "allowDowngrade",
+            "description": "Allows downgrade of the version for the content type.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/versioncomponent"
+            }
+          },
+          {
+            "name": "allowUpgrade",
+            "description": "Allows major upgrade of the version for the content type.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/versioncomponent"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The content type that should be saved",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/contentType"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/contentType"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "The content type was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/contentType"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+
+        }
+      },
+      "delete": {
+        "description": "Deletes a content type",
+        "operationId": "Delete",
+        "responses": {
+          "204": {
+            "description": "The content type was deleted."
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/api/contentmanagement/v1/contenttypes/analyze": {
+      "post": {
+        "description": "Analyze a content type.",
+        "operationId": "Analyze",
+        "parameters": [],
+        "requestBody": {
+          "description": "The content types that should be analyzed.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/contentType"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An array of content type compare result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/contentTypeCompareResult"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/contentmanagement/v1/propertydatatypes": {
+      "get": {
+        "description": "Returns all possible property data types.",
+        "operationId": "ListPropertyDataTypes",
+        "responses": {
+          "200": {
+            "description": "An array of content types",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/propertyDataType"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "contentType": {
+        "type": "object",
+        "required": [
+          "name",
+          "base"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "base": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "properties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/contentTypeProperty"
+            }
+          }
+        }
+      },
+      "contentTypeProperty": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "dataType": {
+            "$ref": "#/components/schemas/propertyDataType"
+          }
+        }
+      },
+      "propertyDataType": {
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "itemType": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "versioncomponent": {
+        "type": "string",
+        "enum": [
+          "None",
+          "Revision",
+          "Build",
+          "Minor",
+          "Major"
+        ]
+      },
+      "contentTypeCompareResult": {
+        "type": "object",
+        "required": [
+          "versioncomponent",
+          "reason"
+        ],
+        "properties": {
+          "versioncomponent": {
+            "type": "string",
+            "enum": [
+              "None",
+              "Revision",
+              "Build",
+              "Minor",
+              "Major"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "responses": {
+      "NotFound": {
+        "description": "The content type could not be found"
+      },
+      "BadRequest": {
+        "description": "The request contains some invalid parameters."
+      }
+    }
+  }
+}

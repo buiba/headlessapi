@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>EPiServer.ContentManagementApi</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\EPiServer.ContentManagementApi\EPiServer.ContentManagementApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>   
+    <PackageReference Include="FluentAssertions" />    
+  </ItemGroup>
+
+</Project>

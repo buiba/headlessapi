@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <Import Project="$(BuildDirectory)website.props" />
+
+  <ItemGroup>
+    <Reference Include="System.Web" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi" />
+    <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="Swashbuckle" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\EPiServer.ContentApi.Cms\EPiServer.ContentApi.Cms.csproj" />
+    <ProjectReference Include="..\..\src\EPiServer.ContentApi.Commerce\EPiServer.ContentApi.Commerce.csproj" />
+    <ProjectReference Include="..\..\src\EPiServer.ContentApi.Search\EPiServer.ContentApi.Search.csproj" />
+  </ItemGroup>
+  
+</Project>

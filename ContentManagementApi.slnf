@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "path": "EPiServer.ContentApi.sln",
+    "projects": [
+      "samples\\Alloy.Sample\\Alloy.Sample.csproj",
+      "src\\EPiServer.ContentManagementApi\\EPiServer.ContentManagementApi.csproj",
+      "tests\\EPiServer.ContentManagementApi.IntegrationTests\\EPiServer.ContentManagementApi.IntegrationTests.csproj"
+    ]
+  }
+}

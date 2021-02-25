@@ -1,0 +1,15 @@
+{
+  "solution": {
+    "path": "EPiServer.ContentApi.sln",
+    "projects": [
+      "samples\\Alloy.Sample\\Alloy.Sample.csproj",
+      "samples\\EPiServer.DefinitionsApi.Docs\\EPiServer.DefinitionsApi.Docs.csproj",
+      "src\\EPiServer.DefinitionsApi.Commerce\\EPiServer.DefinitionsApi.Commerce.csproj",
+      "src\\EPiServer.DefinitionsApi\\EPiServer.DefinitionsApi.csproj",
+      "tests\\EPiServer.DefinitionsApi.Commerce.IntegrationTests\\EPiServer.DefinitionsApi.Commerce.IntegrationTests.csproj",
+      "tests\\EPiServer.DefinitionsApi.Commerce.Tests\\EPiServer.DefinitionsApi.Commerce.Tests.csproj",
+      "tests\\EPiServer.DefinitionsApi.IntegrationTests\\EPiServer.DefinitionsApi.IntegrationTests.csproj",
+      "tests\\EPiServer.DefinitionsApi.Tests\\EPiServer.DefinitionsApi.Tests.csproj"
+    ]
+  }
+}

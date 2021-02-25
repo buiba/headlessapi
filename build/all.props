@@ -1,0 +1,37 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <LangVersion>7.3</LangVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>NU5048;NU5125;CS1591</NoWarn>
+    <IsPackable>false</IsPackable>
+    <WarnOnPackingNonPackableProject>false</WarnOnPackingNonPackableProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Enable file nesting in projects -->
+    <ProjectCapability Include="DynamicDependentFile" />
+    <ProjectCapability Include="DynamicFileNesting" />
+  </ItemGroup>
+  
+  <PropertyGroup>
+    <!-- Assigns SolutionPath when building individual projects -->
+    <SolutionDir Condition=" '$(SolutionDir)' == '' ">$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)\..\'))</SolutionDir>
+    <BuildDirectory>$(MSBuildThisFileDirectory)</BuildDirectory>
+    <ArtifactsDirectory>$(SolutionDir)artifacts\</ArtifactsDirectory>
+    <EmptyDatabaseFile>$(BuildDirectory)database\empty-db.mdf</EmptyDatabaseFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IsSourcesProject Condition="$(MSBuildProjectName.EndsWith('.Sources'))">true</IsSourcesProject>
+    <IsIntegrationTestProject Condition="$(MSBuildProjectName.EndsWith('.IntegrationTests'))">true</IsIntegrationTestProject>
+    <IsUnitTestProject Condition="$(MSBuildProjectName.EndsWith('.Tests'))">true</IsUnitTestProject>
+    <IsTestProject Condition="'$(IsUnitTestProject)' == 'true' or '$(IsIntegrationTestProject)' == 'true'" />
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(IsTestProject)' != 'true'">
+    <InternalsVisibleTo Include="$(MSBuildProjectName).Tests, PublicKey=0024000004800000940000000602000000240000525341310004000001000100c9f2355279bd8cb54ae2a6f8d3732efe3cec8b143cac172c1e389715228688bf60ed6bea551ef353d4b38495554becb48482a3a3ac165c511aceedc64d2a5fd291361292b3b43e2d49456ad29dd8cb3e439a0ef88557b94240799ba1e0e84ec23b662685fb85fba88a17240e04d0807f586acd3c12cb563ac987bf9fb5c216ad" />
+  </ItemGroup>
+
+  <Import Project="$(BuildDirectory)tests.props" Condition="$(MSBuildProjectName.EndsWith('Tests'))" />
+</Project>

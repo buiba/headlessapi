@@ -1,0 +1,12 @@
+<Project>
+  <PropertyGroup>
+    <OutputPath>bin</OutputPath>
+    <OutputType>Library</OutputType>
+    <RunCommand>null</RunCommand>
+    <SignAssembly>false</SignAssembly>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+  </PropertyGroup>
+</Project>

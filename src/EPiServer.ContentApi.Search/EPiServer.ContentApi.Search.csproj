@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(BuildDirectory)public.props" />
+
+  <PropertyGroup>
+    <NuspecFile>EPiServer.ContentDeliveryApi.Search.nuspec</NuspecFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPiServer.Find.Cms" />
+    <PackageReference Include="Microsoft.AspNet.OData" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EPiServer.ContentApi.Core\EPiServer.ContentApi.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+</Project>

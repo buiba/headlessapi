@@ -1,0 +1,62 @@
+<Project>
+  <PropertyGroup>
+    <!-- Some projects requires a later version of Newtonsoft.Json because it uses ItemNullValueHandling.
+         These specifices this property in their local project. -->
+    <NewtonsoftJsonVersion Condition="'$(NewtonsoftJsonVersion)' == ''">10.0.3</NewtonsoftJsonVersion>
+    <CmsCoreVersion Condition="'$(CmsCoreVersion)' == ''">11.20.2-inte-010855</CmsCoreVersion>
+    <CmsUIVersion Condition="'$(CmsUIVersion)' == ''">11.25.0</CmsUIVersion>
+  </PropertyGroup>
+  <!-- EPiServer dependencies-->
+  <ItemGroup>
+    <PackageReference Update="EPiServer.CMS.Core" Version="$(CmsCoreVersion)" />
+    <PackageReference Update="EPiServer.CMS.AspNet" Version="$(CmsCoreVersion)" />
+    <PackageReference Update="EPiServer.CMS.UI.Core" Version="$(CmsUIVersion)" />
+    <PackageReference Update="EPiServer.CMS.UI.AspNetIdentity" Version="$(CmsUIVersion)" />
+    <PackageReference Update="EPiServer.CMS.TinyMce" Version="1.1.0" />
+    <PackageReference Update="EPiServer.Commerce.Core" Version="13.25.0-inte-004197" />
+    <PackageReference Update="EPiServer.Forms" Version="4.25.1" />
+    <PackageReference Update="EPiServer.Find.Cms" Version="13.2.10" />
+    <PackageReference Update="EPiServer.Find.Commerce" Version="11.1.1" />
+    <PackageReference Update="EPiServer.ServiceLocation.StructureMap" Version="2.0.3" />
+  </ItemGroup>
+
+  <!-- External dependencies-->
+  <ItemGroup>
+    <PackageReference Update="Effort.EF6" Version="1.3.0" />
+    <PackageReference Update="FluentAssertions" Version="5.9.0" />
+    <PackageReference Update="Microsoft.AspNet.Identity.Owin" Version="2.2.1" />
+    <PackageReference Update="Microsoft.AspNet.Identity.EntityFramework" Version="2.2.1" />
+    <PackageReference Update="Microsoft.AspNet.OData" Version="6.0.0" />
+    <PackageReference Update="Microsoft.AspNet.Providers.Core" Version="2.0.0" />
+    <PackageReference Update="Microsoft.AspNet.Web.Optimization" Version="1.1.0" />
+    <PackageReference Update="Microsoft.AspNet.WebApi" Version="5.2.3" />
+    <PackageReference Update="Microsoft.AspNet.WebApi.WebHost" Version="5.2.3" />
+    <PackageReference Update="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Update="Microsoft.AspNet.WebApi.Cors" Version="5.2.3" />
+    <PackageReference Update="Microsoft.AspNet.WebApi.OwinSelfHost" Version="5.2.7" />
+    <PackageReference Update="Microsoft.AspNet.WebPages" Version="3.2.3" />
+    <PackageReference Update="Microsoft.Data.SqlClient" Version="1.1.3" />
+    <PackageReference Update="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0" />
+    <PackageReference Update="Microsoft.Extensions.HashCodeCombiner.Sources" Version="2.0.0" />
+    <PackageReference Update="Microsoft.Extensions.ObjectMethodExecutor.Sources" Version="2.1.1" />
+    <PackageReference Update="Microsoft.Extensions.PropertyHelper.Sources" Version="2.0.0" />
+    <PackageReference Update="Microsoft.Owin.Security" Version="3.1.0" />
+    <PackageReference Update="Microsoft.Owin.Security.Cookies" Version="3.1.0" />
+    <PackageReference Update="Microsoft.Owin.Security.OAuth" Version="3.1.0" />
+    <PackageReference Update="Microsoft.Owin.Testing" Version="4.1.1" />
+    <PackageReference Update="Microsoft.NET.Test.Sdk" Version="16.6.1" />
+    <PackageReference Update="Moq" Version="4.13.1" />
+    <PackageReference Update="Newtonsoft.Json" Version="$(NewtonsoftJsonVersion)" />
+    <PackageReference Update="NMemory" Version="1.1.0" />
+    <PackageReference Update="structuremap-signed" Version="3.1.9.463" />
+    <PackageReference Update="Swashbuckle" Version="5.6.0" />
+    <PackageReference Update="xunit" Version="2.4.1" />
+    <PackageReference Update="xunit.analyzers" Version="0.10.0" />
+    <PackageReference Update="xunit.assert" Version="2.4.1" />
+    <PackageReference Update="xunit.assert.source" Version="2.4.1" />
+    <PackageReference Update="xunit.core" Version="2.4.1" />
+    <PackageReference Update="xunit.runner.visualstudio" Version="2.4.3" />
+    <PackageReference Update="FluentAssertions" Version="5.10.3" />
+    <PackageReference Update="FluentAssertions.Json" Version="5.5.0" />
+  </ItemGroup>
+</Project>

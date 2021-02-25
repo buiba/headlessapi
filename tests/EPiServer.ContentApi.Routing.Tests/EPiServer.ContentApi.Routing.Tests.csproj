@@ -1,0 +1,8 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\EPiServer.ContentApi.Core\EPiServer.ContentApi.Core.csproj" />
+    <ProjectReference Include="..\..\src\EPiServer.ContentApi.Routing\EPiServer.ContentApi.Routing.csproj" />
+  </ItemGroup>
+
+</Project>

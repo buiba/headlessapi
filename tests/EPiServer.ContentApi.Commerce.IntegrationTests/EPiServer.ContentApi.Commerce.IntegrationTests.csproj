@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\EPiServer.ContentApi.IntegrationTests.Setup\EPiServer.ContentApi.IntegrationTests.Setup.projitems" Label="Shared" />
+
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\EPiServer.ContentApi.Commerce\EPiServer.ContentApi.Commerce.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App.config" CopyToOutputDirectory="Always" />
+    <None Update="Configs\*.config" CopyToOutputDirectory="Always" />
+    <None Update="connectionStrings.config" CopyToOutputDirectory="Always" />
+    <None Update="Resources\*.mdf" CopyToOutputDirectory="Always" />
+  </ItemGroup>
+
+</Project>

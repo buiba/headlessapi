@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>EPiServer.ContentDeliveryApi.Commerce</id>
+    <version>$version$</version>
+    <title>EPiServer.ContentDeliveryApi.Commerce</title>
+    <authors>Episerver AB</authors>
+    <owners>Episerver</owners>
+    <licenseUrl>http://www.episerver.com/eula/</licenseUrl>
+    <iconUrl>http://www.episerver.com/Framework/Styles/Images/Products/Integration.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <summary>Episerver Content Delivery Commerce</summary>
+    <copyright>Copyright Episerver 2019</copyright>
+    <tags>Episerver Content Delivery Commerce</tags>
+    <description>Episerver Content Delivery Commerce</description>
+    <dependencies>
+      <group targetFramework="$TargetFramework$">
+        <dependency id="EPiServer.ContentDeliveryApi.Cms" version="[$version$, 3)" />
+        <dependency id="EPiServer.Commerce.Core" version="[13.25.0, 14)" />
+        <dependency id="EPiServer.CMS.AspNet" version="[11.19.0, 12)" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\$configuration$\EPiServer.ContentApi.Commerce.dll" target="lib\net461\" />
+    <file src="bin\$configuration$\EPiServer.ContentApi.Commerce.xml" target="lib\net461\" />
+  </files>
+</package>

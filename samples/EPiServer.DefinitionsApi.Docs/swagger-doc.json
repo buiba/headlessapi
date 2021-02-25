@@ -1,0 +1,779 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2-18",
+    "title": "EPiServer Definitions API"
+  },
+  "host": "localhost:62124",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/api/episerver/v2.0/contenttypes": {
+      "get": {
+        "tags": [
+          "ContentTypes"
+        ],
+        "summary": "List all content types in the system.",
+        "operationId": "ContentTypes_List",
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "top",
+            "in": "query",
+            "description": "The maximum number of returned content types.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "continuationToken",
+            "in": "query",
+            "description": "A token identifying a position to continue from a previously paged response.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/contentType"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ContentTypes"
+        ],
+        "summary": "Creates a new content type in the system.",
+        "operationId": "ContentTypes_Create",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "contentType",
+            "in": "body",
+            "description": "The content type that should be created.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/contentType"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/contentType"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "409": {
+            "description": "Conflict"
+          }
+        }
+      }
+    },
+    "/api/episerver/v2.0/contenttypes/{id}": {
+      "get": {
+        "tags": [
+          "ContentTypes"
+        ],
+        "summary": "Gets the content type at the current location.",
+        "operationId": "ContentTypes_Get",
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The identifier of the content type.",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/contentType"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ContentTypes"
+        ],
+        "summary": "Updates the content type at the current location or create a new one if it doesn't already exist.",
+        "operationId": "ContentTypes_CreateOrUpdate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The identifier of the content type.",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "contentType",
+            "in": "body",
+            "description": "The content type that should be created or updated.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/contentType"
+            }
+          },
+          {
+            "name": "allowDowngrade",
+            "in": "query",
+            "description": "Defines which types of downgrades that are allowed.",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "none",
+              "patch",
+              "minor",
+              "major"
+            ]
+          },
+          {
+            "name": "allowUpgrade",
+            "in": "query",
+            "description": "Defines which types of upgrades that are allowed.",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "none",
+              "patch",
+              "minor",
+              "major"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/contentType"
+            }
+          },
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/contentType"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "409": {
+            "description": "Conflict"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ContentTypes"
+        ],
+        "summary": "Deletes the content type at this location.",
+        "operationId": "ContentTypes_Delete",
+        "consumes": [],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The identifier of the content type.",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          },
+          "404": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/api/episerver/v2.0/contenttypes/analyze": {
+      "post": {
+        "tags": [
+          "ContentTypes"
+        ],
+        "summary": "Anayze content types.",
+        "operationId": "ContentTypes_Analyze",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "contentType",
+            "in": "body",
+            "description": "The content type that should be analyzed.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/contentType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/contentTypeDifference"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/episerver/v2.0/definitions/import": {
+      "post": {
+        "tags": [
+          "Import"
+        ],
+        "summary": "Import application definitions.",
+        "operationId": "Import_Post",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "importData",
+            "in": "body",
+            "description": "The definitions to import.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/importData"
+            }
+          },
+          {
+            "name": "continueOnError",
+            "in": "query",
+            "description": "Indicates if the next import set should continue even if one sets fails.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/importLogMessage"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/api/episerver/v2.0/propertydatatypes": {
+      "get": {
+        "tags": [
+          "PropertyDataTypes"
+        ],
+        "summary": "List all property data types available in the system.",
+        "operationId": "PropertyDataTypes_List",
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/propertyDataType"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/episerver/v2.0/propertygroups/{name}": {
+      "get": {
+        "tags": [
+          "PropertyGroups"
+        ],
+        "summary": "Gets a property group with the provided name.",
+        "operationId": "PropertyGroups_Get",
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "The identifier of the property group.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/propertyGroup"
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "PropertyGroups"
+        ],
+        "summary": "Updates or creates a property group in the system with the provided name.",
+        "operationId": "PropertyGroups_CreateOrUpdate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "The name of the property group.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "propertyGroupModel",
+            "in": "body",
+            "description": "The property group that should be updated.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/propertyGroup"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/propertyGroup"
+            }
+          },
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/propertyGroup"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "409": {
+            "description": "Conflict"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "PropertyGroups"
+        ],
+        "summary": "Deletes the property group with the provided name.",
+        "operationId": "PropertyGroups_Delete",
+        "consumes": [],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "The name of the property group.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/api/episerver/v2.0/propertygroups": {
+      "get": {
+        "tags": [
+          "PropertyGroups"
+        ],
+        "summary": "List all property groups in the system.",
+        "operationId": "PropertyGroups_List",
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/propertyGroup"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "PropertyGroups"
+        ],
+        "summary": "Creates a new property group in the system.",
+        "operationId": "PropertyGroups_Create",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "propertyGroupModel",
+            "in": "body",
+            "description": "The property group that should be created.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/propertyGroup"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/propertyGroup"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "409": {
+            "description": "Conflict"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "contentType": {
+      "description": "A content type definition describes the format of content items.",
+      "required": [
+        "name",
+        "baseType"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "description": "The unique identifier of the content type.",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "name": {
+          "description": "The name of the content type.",
+          "pattern": "[a-zA-Z][\\w]*",
+          "type": "string"
+        },
+        "baseType": {
+          "description": "The base type for this content type.",
+          "type": "string"
+        },
+        "version": {
+          "description": "The version of the content type.",
+          "type": "string"
+        },
+        "properties": {
+          "description": "A list with the properties of this content type.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/contentTypeProperty"
+          },
+          "readOnly": true
+        }
+      }
+    },
+    "contentTypeProperty": {
+      "description": "A content type property definition describes a property of a content items.",
+      "required": [
+        "name",
+        "dataType"
+      ],
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The name of the property.",
+          "pattern": "[a-zA-Z][\\w]*",
+          "type": "string"
+        },
+        "dataType": {
+          "$ref": "#/definitions/propertyDataType",
+          "description": "The data type of the property."
+        },
+        "branchSpecific": {
+          "description": "Indicates if the property has specific values for each content branch or if values are shared between all branches.",
+          "type": "boolean"
+        },
+        "editSettings": {
+          "$ref": "#/definitions/propertyEditSettings",
+          "description": "The edit settings of the property."
+        }
+      }
+    },
+    "propertyDataType": {
+      "description": "Defines the type of a content type property.",
+      "required": [
+        "dataType"
+      ],
+      "type": "object",
+      "properties": {
+        "dataType": {
+          "description": "The main data type name.",
+          "pattern": "[a-zA-Z][(\\w\\s*\\w?),\\.]*",
+          "type": "string"
+        },
+        "itemType": {
+          "description": "The item type for cases when the 'dataType' is 'PropertyBlock'.",
+          "pattern": "[a-zA-Z][(\\w\\s*\\w?),\\.]*",
+          "type": "string"
+        }
+      }
+    },
+    "propertyEditSettings": {
+      "description": "Defines settings for content type properties that affects how the property is displayed when edited.",
+      "required": [
+        "displayName"
+      ],
+      "type": "object",
+      "properties": {
+        "visibility": {
+          "description": "Indicates if we should display an edit user interface for the property.",
+          "enum": [
+            "default",
+            "hidden"
+          ],
+          "type": "string"
+        },
+        "displayName": {
+          "description": "The name that should be used when editing the property.",
+          "type": "string"
+        },
+        "groupName": {
+          "description": "Name of the property group that this property should be displayed in.",
+          "type": "string"
+        },
+        "order": {
+          "format": "int32",
+          "description": "The field order used for ordering the properties when editing.",
+          "maximum": 2147483647,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "helpText": {
+          "description": "The text that should be used as help when editing the property.",
+          "type": "string"
+        },
+        "hint": {
+          "description": "A hint that will be used when resolving which editor that should be used when editing this property.",
+          "type": "string"
+        }
+      }
+    },
+    "contentTypeDifference": {
+      "description": "Describes a difference between a content type definition and the existing version.",
+      "type": "object",
+      "properties": {
+        "reason": {
+          "description": "Describes the reason for the difference.",
+          "type": "string",
+          "readOnly": true
+        },
+        "versionComponent": {
+          "description": "Indicates if the difference is considered a major, minor or patch level change.",
+          "enum": [
+            "none",
+            "patch",
+            "minor",
+            "major"
+          ],
+          "type": "string",
+          "readOnly": true
+        },
+        "isValid": {
+          "description": "Indicates if this difference is a valid change that can be applied.",
+          "type": "boolean",
+          "readOnly": true
+        }
+      }
+    },
+    "contentTypesSet": {
+      "description": "Set of content types to be imported.",
+      "type": "object",
+      "properties": {
+        "allowedDowngrades": {
+          "description": "Indicates which types of content type downgrades that are allowed during the import.",
+          "enum": [
+            "none",
+            "patch",
+            "minor",
+            "major"
+          ],
+          "type": "string"
+        },
+        "allowedUpgrades": {
+          "description": "Indicates which types of content type upgrades that are allowed during the import.",
+          "enum": [
+            "none",
+            "patch",
+            "minor",
+            "major"
+          ],
+          "type": "string"
+        },
+        "items": {
+          "description": "List of content types that should be imported.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/contentType"
+          }
+        }
+      }
+    },
+    "propertyGroupsSet": {
+      "description": "Set of property groups to be imported.",
+      "type": "object",
+      "properties": {
+        "items": {
+          "description": "List of property groups that should be imported.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/propertyGroup"
+          }
+        }
+      }
+    },
+    "propertyGroup": {
+      "description": "Defines a groups for content type properties.",
+      "required": [
+        "name"
+      ],
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The name of the group.",
+          "pattern": "[a-zA-Z0-9][\\w]*",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "The display name of the group.",
+          "type": "string"
+        },
+        "sortIndex": {
+          "format": "int32",
+          "description": "The relative sort index.",
+          "maximum": 10000,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "systemGroup": {
+          "description": "Indicates if the group is managed by the system or not.",
+          "type": "boolean",
+          "readOnly": true
+        }
+      }
+    },
+    "importData": {
+      "description": "Contains application definitions for import.",
+      "type": "object",
+      "properties": {
+        "contentTypes": {
+          "$ref": "#/definitions/contentTypesSet"
+        },
+        "propertyGroups": {
+          "$ref": "#/definitions/propertyGroupsSet"
+        }
+      }
+    },
+    "importLogMessage": {
+      "description": "Defines an import log message.",
+      "type": "object",
+      "properties": {
+        "Message": {
+          "description": "Gets the message.",
+          "type": "string",
+          "readOnly": true
+        },
+        "Severity": {
+          "description": "Gets the severity of the message.",
+          "enum": [
+            "information",
+            "success",
+            "warning",
+            "error"
+          ],
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    }
+  }
+}

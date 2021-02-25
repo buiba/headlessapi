@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>EPiServer.ContentApi.Security.Internal</RootNamespace>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\ContentApi.Security.Sources\ContentApi.Security.Sources.csproj" />
+  </ItemGroup>
+
+</Project>

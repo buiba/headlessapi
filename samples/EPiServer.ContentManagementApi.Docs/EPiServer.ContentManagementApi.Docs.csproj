@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web" ToolsVersion="Current">
+  <PropertyGroup>
+    <FileUpgradeFlags>40</FileUpgradeFlags>
+    <UpgradeBackupLocation>C:\Users\BuiBa\Desktop\HeadlessApi\headlessapi\Backup2\</UpgradeBackupLocation>
+    <OldToolsVersion>Current</OldToolsVersion>
+  </PropertyGroup>
+  <Import Project="$(BuildDirectory)website.props" />
+  <ItemGroup>
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi" />
+    <PackageReference Include="Swashbuckle" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\EPiServer.ContentManagementApi\EPiServer.ContentManagementApi.csproj" />
+  </ItemGroup>
+</Project>

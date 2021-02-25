@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>EPiServer.ContentApi.Cors.Internal</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\ContentApi.Cors.Sources\ContentApi.Cors.Sources.csproj" />
+  </ItemGroup>
+
+</Project>

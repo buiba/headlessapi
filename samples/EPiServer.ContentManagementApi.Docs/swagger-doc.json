@@ -1,0 +1,837 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2-18",
+    "title": "EPiServer Content Management API"
+  },
+  "host": "localhost:53035",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/api/episerver/v2.0/contentmanagement/{contentGuid}": {
+      "get": {
+        "tags": [
+          "ContentManagementApi"
+        ],
+        "summary": "Get a common draft of a content by given unique identifier and language.",
+        "operationId": "ContentManagementApi_GetCommonDraft",
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "contentGuid",
+            "in": "path",
+            "description": "Unique identifier of the content to be retrieved.",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language of the content to be retrieved. Example: 'en' or 'sv'",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/content"
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ContentManagementApi"
+        ],
+        "summary": "Updates the content item at the current location or create a new one if it doesn't exist.",
+        "operationId": "ContentManagementApi_CreateOrUpdate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "contentGuid",
+            "in": "path",
+            "description": "Guid of the content that should be created/updated.",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "contentApiCreateModel",
+            "in": "body",
+            "description": "The model that contains information for creating/updating content item.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/content"
+            }
+          },
+          {
+            "name": "x-epi-validation-mode",
+            "in": "header",
+            "description": "The validation mode used when saving content.",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "complete",
+              "minimal"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/content"
+            }
+          },
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/content"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "NotFound"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ContentManagementApi"
+        ],
+        "summary": "Create a new version of a content by a given unique identifier.",
+        "operationId": "ContentManagementApi_CreateVersionByContentGuid",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "contentGuid",
+            "in": "path",
+            "description": "Unique identifier of a content that will create the new content version from.",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "contentApiCreateModel",
+            "in": "body",
+            "description": "Contains information of the new version to be created.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/content"
+            }
+          },
+          {
+            "name": "x-epi-validation-mode",
+            "in": "header",
+            "description": "The validation mode used when saving content.",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "complete",
+              "minimal"
+            ]
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/content"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ContentManagementApi"
+        ],
+        "summary": "Delete a content by unique identifier.",
+        "operationId": "ContentManagementApi_DeleteByContentGuid",
+        "consumes": [],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "contentGuid",
+            "in": "path",
+            "description": "Unique identifier of the content to be deleted.",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "x-epi-permanent-delete",
+            "in": "header",
+            "description": "Set to true in order to permanently delete the content. Otherwise it will be moved to the wastebasket. Read from the 'x-epi-permanent-delete' header.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "409": {
+            "description": "Conflict"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "ContentManagementApi"
+        ],
+        "summary": "Update the specified content item.",
+        "operationId": "ContentManagementApi_PatchByContentGuid",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "contentGuid",
+            "in": "path",
+            "description": "Which content item to update.",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "contentApiPatchModel",
+            "in": "body",
+            "description": "How the content item should be updated.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/patchContentModel"
+            }
+          },
+          {
+            "name": "x-epi-validation-mode",
+            "in": "header",
+            "description": "The validation mode used when saving content.",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "complete",
+              "minimal"
+            ]
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/episerver/v2.0/contentmanagement/{contentReference}": {
+      "get": {
+        "tags": [
+          "ContentManagementApi"
+        ],
+        "summary": "Get a common draft of a content by given content reference and language.",
+        "operationId": "ContentManagementApi_Get",
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "contentReference",
+            "in": "path",
+            "description": "Content reference of the content to be retrieved.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Language of the content to be retrieved. Example: 'en' or 'sv'",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "$ref": "#/definitions/content"
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ContentManagementApi"
+        ],
+        "summary": "Create a new version of a content by a given content reference.",
+        "operationId": "ContentManagementApi_CreateVersionByContentReference",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "contentReference",
+            "in": "path",
+            "description": "Content reference of a content that will create the new content version from.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "contentApiCreateModel",
+            "in": "body",
+            "description": "Contains information of the new version to be created.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/content"
+            }
+          },
+          {
+            "name": "x-epi-validation-mode",
+            "in": "header",
+            "description": "The validation mode used when saving content.",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "complete",
+              "minimal"
+            ]
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/content"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ContentManagementApi"
+        ],
+        "summary": "Delete a content by content reference.",
+        "operationId": "ContentManagementApi_DeleteByContentReference",
+        "consumes": [],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "contentReference",
+            "in": "path",
+            "description": "Content reference of the content to be deleted.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "x-epi-permanent-delete",
+            "in": "header",
+            "description": "Set to true in order to permanently delete the content. Otherwise it will be moved to the wastebasket. Read from the 'x-epi-permanent-delete' header.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "409": {
+            "description": "Conflict"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "ContentManagementApi"
+        ],
+        "summary": "Update the specified content item.",
+        "operationId": "ContentManagementApi_PatchByContentReference",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "contentReference",
+            "in": "path",
+            "description": "Which content item to update.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "contentApiPatchModel",
+            "in": "body",
+            "description": "How the content item should be updated.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/patchContentModel"
+            }
+          },
+          {
+            "name": "x-epi-validation-mode",
+            "in": "header",
+            "description": "The validation mode used when saving content.",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "complete",
+              "minimal"
+            ]
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/episerver/v2.0/contentmanagement/{contentGuid}/move": {
+      "post": {
+        "tags": [
+          "ContentManagementApi"
+        ],
+        "summary": "Move a content from its current location to another location.",
+        "operationId": "ContentManagementApi_MoveByContentGuid",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "contentGuid",
+            "in": "path",
+            "description": "Unique identifier of the content to be moved.",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "moveContentModel",
+            "in": "body",
+            "description": "Where the content will be moved to.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/moveContentModel"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/api/episerver/v2.0/contentmanagement/{contentReference}/move": {
+      "post": {
+        "tags": [
+          "ContentManagementApi"
+        ],
+        "summary": "Move a content from its current location to another location.",
+        "operationId": "ContentManagementApi_MoveByContentReference",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "contentReference",
+            "in": "path",
+            "description": "Content reference of the content to be moved.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "moveContentModel",
+            "in": "body",
+            "description": "Where the content will be moved to.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/moveContentModel"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/api/episerver/v2.0/contentmanagement": {
+      "post": {
+        "tags": [
+          "ContentManagementApi"
+        ],
+        "summary": "Create a new content item.",
+        "operationId": "ContentManagementApi_Create",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "contentApiCreateModel",
+            "in": "body",
+            "description": "Contains information of the new content to be created.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/content"
+            }
+          },
+          {
+            "name": "x-epi-validation-mode",
+            "in": "header",
+            "description": "The validation mode used when saving content.",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "complete",
+              "minimal"
+            ]
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/content"
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "description": "Conflict"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "content": {
+      "description": "Serializable model class for IContent exposed in the Content API.",
+      "required": [
+        "name",
+        "contentType",
+        "parentLink"
+      ],
+      "type": "object",
+      "properties": {
+        "contentLink": {
+          "$ref": "#/definitions/contentReference",
+          "description": "Content link of the content."
+        },
+        "name": {
+          "description": "Name of the content.",
+          "type": "string"
+        },
+        "language": {
+          "$ref": "#/definitions/language",
+          "description": "Language of the content."
+        },
+        "existingLanguages": {
+          "description": "The existing languages of the content.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/language"
+          },
+          "readOnly": true
+        },
+        "masterLanguage": {
+          "description": "Master language of the content.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/language"
+            }
+          ],
+          "readOnly": true
+        },
+        "contentType": {
+          "description": "Content type of the content.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "parentLink": {
+          "$ref": "#/definitions/contentReference",
+          "description": "Parent link of the content."
+        },
+        "routeSegment": {
+          "description": "Route segment of the content.",
+          "type": "string"
+        },
+        "url": {
+          "description": "Url of the content.",
+          "type": "string",
+          "readOnly": true
+        },
+        "changed": {
+          "format": "date-time",
+          "description": "The date when the content was last marked as changed.",
+          "type": "string",
+          "readOnly": true
+        },
+        "created": {
+          "format": "date-time",
+          "description": "The datetime when the content was created.",
+          "type": "string",
+          "readOnly": true
+        },
+        "startPublish": {
+          "format": "date-time",
+          "description": "The start publish date of the content.",
+          "type": "string"
+        },
+        "stopPublish": {
+          "format": "date-time",
+          "description": "The stop publish date of the content.",
+          "type": "string"
+        },
+        "saved": {
+          "format": "date-time",
+          "description": "The datetime when the content was last saved.",
+          "type": "string",
+          "readOnly": true
+        },
+        "status": {
+          "description": "Status of the content.",
+          "enum": [
+            "Rejected",
+            "CheckedIn",
+            "CheckedOut",
+            "Published",
+            "DelayedPublish",
+            "AwaitingApproval"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "contentReference": {
+      "description": "Serializable model class for ContentReference.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "description": "Id number of the content.",
+          "type": "integer"
+        },
+        "workId": {
+          "format": "int32",
+          "description": "The version id of the content.",
+          "type": "integer"
+        },
+        "guidValue": {
+          "format": "uuid",
+          "description": "The unique identifier of the content.",
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "providerName": {
+          "description": "The provider name that serves the content.",
+          "type": "string"
+        },
+        "url": {
+          "description": "Url of the content.",
+          "type": "string",
+          "readOnly": true
+        },
+        "language": {
+          "description": "Language of the content.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/language"
+            }
+          ],
+          "readOnly": true
+        }
+      }
+    },
+    "language": {
+      "description": "Serializable model class for store language information",
+      "required": [
+        "name"
+      ],
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "description": "Display name of language. Ex: English, Svenska",
+          "type": "string",
+          "readOnly": true
+        },
+        "name": {
+          "description": "Name of language. Ex: en, sv",
+          "type": "string"
+        }
+      }
+    },
+    "patchContentModel": {
+      "description": "Model for endpoint that update a content item.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name of the content.",
+          "type": "string"
+        },
+        "language": {
+          "$ref": "#/definitions/language",
+          "description": "Language of the content."
+        },
+        "routeSegment": {
+          "description": "Route segment of the content.",
+          "type": "string"
+        },
+        "startPublish": {
+          "format": "date-time",
+          "description": "The start publish date for the content.",
+          "type": "string"
+        },
+        "stopPublish": {
+          "format": "date-time",
+          "description": "The stop publish date of the content.",
+          "type": "string"
+        },
+        "status": {
+          "description": "The version status of the content.",
+          "enum": [
+            "Rejected",
+            "CheckedIn",
+            "CheckedOut",
+            "Published",
+            "DelayedPublish",
+            "AwaitingApproval"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "moveContentModel": {
+      "description": "Model for moving content.",
+      "required": [
+        "parentLink"
+      ],
+      "type": "object",
+      "properties": {
+        "parentLink": {
+          "$ref": "#/definitions/contentReference",
+          "description": "Parent link of the content."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>EPiServer.ContentDeliveryApi.Search.Commerce</id>
+    <version>$version$</version>
+    <title>EPiServer.ContentDeliveryApi.Search.Commerce</title>
+    <authors>Episerver AB</authors>
+    <owners>Episerver</owners>
+    <licenseUrl>http://www.episerver.com/eula/</licenseUrl>
+    <iconUrl>http://www.episerver.com/Framework/Styles/Images/Products/Integration.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <summary>Episerver Content Delivery Search Commerce</summary>
+    <copyright>Copyright Episerver 2018</copyright>
+    <tags>Episerver Content Delivery Search Commerce</tags>
+    <description>Episerver Content Delivery Search Commerce</description>
+    <dependencies>
+      <group targetFramework="$TargetFramework$">
+        <dependency id="EPiServer.ContentDeliveryApi.Search" version="[$version$, 3)" />
+        <dependency id="EPiServer.ContentDeliveryApi.Commerce" version="[$version$, 3)" />
+        <dependency id="EPiServer.Find.Commerce" version="[11.1.1, 12)" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\$configuration$\EPiServer.ContentApi.Search.Commerce.dll" target="lib\net461\" />
+    <file src="bin\$configuration$\EPiServer.ContentApi.Search.Commerce.xml" target="lib\net461\" />
+  </files>
+</package>

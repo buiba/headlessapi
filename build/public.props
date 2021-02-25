@@ -1,0 +1,36 @@
+<Project>
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageOutputPath>$(ArtifactsDirectory)packages\</PackageOutputPath>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <NuspecTargetFramework>.NETFramework4.6.1</NuspecTargetFramework>
+    <NuspecProperties>Configuration=$(Configuration); Version=$(version); TargetFramework=$(NuspecTargetFramework);</NuspecProperties>
+  </PropertyGroup>
+
+  <!-- Code Analysis -->
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>$(SolutionDir)default.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!-- Only warn for missing API documentation in Release mode -->
+  <PropertyGroup Condition=" '$(Configuration)' != 'Release' ">
+    <NoWarn>$(NoWarn);1591;1573</NoWarn>
+  </PropertyGroup>
+
+  <!-- Package information -->
+  <PropertyGroup>
+    <Product Condition=" '$(Product)' == '' ">EPiServer.ContentDeliveryApi</Product>
+    <Description Condition=" '$(Description)' == '' ">Episerver Web Content Management System</Description>
+    <Company>Episerver AB</Company>
+    <Authors>Episerver AB</Authors>
+    <Copyright>© 2003-2019 by Episerver AB. All rights reserved</Copyright>
+    <PackageProjectUrl>http://www.episerver.com/web-content-management/</PackageProjectUrl>
+    <PackageLicenseUrl>http://www.episerver.com/eula/</PackageLicenseUrl>
+    <PackageTags>EPiServer.ContentDeliveryApi</PackageTags>
+  </PropertyGroup>
+
+</Project>

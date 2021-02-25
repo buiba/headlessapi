@@ -1,0 +1,5 @@
+<Project>
+  <Import Project="build\all.props" />
+  <Import Project="build\version.props" />
+  <Import Project="build\sign.props" />
+</Project>

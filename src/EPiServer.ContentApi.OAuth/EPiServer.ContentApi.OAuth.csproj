@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(BuildDirectory)public.props" />
+
+  <PropertyGroup>
+    <NuspecFile>EPiServer.ContentDeliveryApi.OAuth.nuspec</NuspecFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPiServer.CMS.UI.Core" />
+    <PackageReference Include="Microsoft.Owin.Security.OAuth" />
+    <PackageReference Include="Microsoft.AspNet.Identity.Owin" />
+    <PackageReference Include="Microsoft.AspNet.Identity.EntityFramework" />
+  </ItemGroup>
+</Project>

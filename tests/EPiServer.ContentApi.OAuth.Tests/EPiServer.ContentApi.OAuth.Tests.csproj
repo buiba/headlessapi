@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\EPiServer.ContentApi.OAuth\EPiServer.ContentApi.OAuth.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Owin.Security.OAuth" />
+    <PackageReference Include="Microsoft.Owin.Security" />
+    <PackageReference Include="Microsoft.Owin.Security.Cookies" />
+    <PackageReference Include="Microsoft.AspNet.Identity.Owin" />
+    <PackageReference Include="Microsoft.AspNet.Identity.EntityFramework" />
+    <PackageReference Include="EPiServer.CMS.UI.AspNetIdentity" />
+    <PackageReference Include="Effort.EF6" />
+    <PackageReference Include="NMemory" />
+  </ItemGroup>
+
+</Project>

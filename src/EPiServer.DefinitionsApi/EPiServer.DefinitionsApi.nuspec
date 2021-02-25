@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>EPiServer.DefinitionsApi</id>
+    <version>$version$</version>
+    <title>EPiServer.DefinitionsApi</title>
+    <authors>Episerver AB</authors>
+    <owners>Episerver</owners>
+    <licenseUrl>http://www.episerver.com/eula/</licenseUrl>
+    <iconUrl>http://www.episerver.com/Framework/Styles/Images/Products/Integration.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <summary>Episerver Definitions API</summary>
+    <copyright>Copyright Episerver 2020</copyright>
+    <tags>Episerver DefinitionsAPI</tags>
+    <description>REST API for managing definitions in Episerver</description>
+    <dependencies>
+      <group targetFramework="$TargetFramework$">
+        <dependency id="EPiServer.CMS.Core" version="[11.19.0, 12.0)" />
+        <dependency id="Microsoft.AspNet.WebApi.Cors" version="[5.2.3, 6.0)" />
+        <dependency id="Microsoft.AspNet.WebApi.WebHost" version="[5.2.3, 6.0)" />
+        <dependency id="Newtonsoft.Json" version="[11.0.2, 13.0)" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\$configuration$\EPiServer.DefinitionsApi.dll" target="lib\net461\" />
+    <file src="bin\$configuration$\EPiServer.DefinitionsApi.xml" target="lib\net461\" />
+  </files>
+</package>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>962a50f8-019e-4c37-9ce8-c5236c2f668b</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>EPiServer.ContentApi.IntegrationTests</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Asserts\AssertResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Asserts\StatusCodeMismatchException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ContentModels\Blocks\NotFlattenableBlock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ContentModels\Blocks\TextBlock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ContentModels\Media\DefaultMedia.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ContentModels\Pages\AllPropertyPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ContentModels\Pages\LocalBlockPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ContentModels\Pages\PageWithCustomValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ContentModels\Pages\PropertyPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ContentModels\Pages\AllPropertyPageWithValidationAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ContentModels\Pages\StandardPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ContentModels\Pages\StartPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ContentModels\Properties\CustomPropertyLongString.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HttpResponseExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestSetup\EPiServerTestInitialization.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestSetup\DatabaseFixture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestSetup\EPiServerFixture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestSetup\ImpersonationActionFilter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestSetup\IRestRequestInitializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestSetup\IntegrationTestCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestSetup\JsonContent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestSetup\NoopSecurityEntityProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestSetup\RestRequestInitializerActionFilter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestSetup\ServiceFixture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestSetup\Startup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestSetup\TestHostingEnvironment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestSetup\UserScope.cs" />
+  </ItemGroup>
+</Project>

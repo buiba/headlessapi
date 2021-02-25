@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\EPiServer.ContentApi.IntegrationTests.Setup\EPiServer.ContentApi.IntegrationTests.Setup.projitems" Label="Shared" />
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\EPiServer.ContentApi.Cms\EPiServer.ContentApi.Cms.csproj" />
+    <ProjectReference Include="..\CustomMappers\CustomMappers.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App.config" CopyToOutputDirectory="Always" />
+  </ItemGroup>
+
+</Project>

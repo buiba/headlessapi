@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\EPiServer.ContentApi.Cms\EPiServer.ContentApi.Cms.csproj" />
+    <ProjectReference Include="..\..\src\EPiServer.ContentApi.Core\EPiServer.ContentApi.Core.csproj" />
+    <ProjectReference Include="..\..\src\EPiServer.ContentApi.Search\EPiServer.ContentApi.Search.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>EPiServer.ContentApi.Error</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\EPiServer.ContentApi.IntegrationTests.Setup\Asserts\**\*.cs" Exclude="**\obj\**" Link="Asserts\%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    
+    <ProjectReference Include="..\..\src\ContentApi.Error.Sources\ContentApi.Error.Sources.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(BuildDirectory)public.props" />
+  
+  <PropertyGroup>
+      <NuspecFile>EPiServer.ContentDeliveryApi.Forms.nuspec</NuspecFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+      <PackageReference Include="EPiServer.Forms" />
+      <PackageReference Include="Microsoft.AspNet.WebPages" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EPiServer.ContentApi.Cms\EPiServer.ContentApi.Cms.csproj" />
+    <ProjectReference Include="..\EPiServer.ContentApi.Core\EPiServer.ContentApi.Core.csproj" />
+  </ItemGroup>
+</Project>

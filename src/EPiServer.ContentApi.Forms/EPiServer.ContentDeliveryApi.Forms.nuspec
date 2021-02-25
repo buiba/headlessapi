@@ -1,0 +1,28 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>EPiServer.ContentDeliveryApi.Forms</id>
+    <version>$version$</version>
+    <title>EPiServer.ContentDeliveryApi.Forms</title>
+    <authors>Episerver AB</authors>
+    <owners>Episerver</owners>
+    <licenseUrl>http://www.episerver.com/eula/</licenseUrl>
+    <iconUrl>http://www.episerver.com/Framework/Styles/Images/Products/Integration.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <summary>Episerver Content Delivery Forms</summary>
+    <copyright>Copyright Episerver 2018</copyright>
+    <tags>Episerver Content Delivery Forms</tags>
+    <description>Episerver Content Delivery Forms</description>
+    <dependencies>
+      <group targetFramework="$TargetFramework$">
+        <dependency id="EPiServer.ContentDeliveryApi.Cms" version="[$version$, 3)" />
+        <dependency id="EPiServer.Forms" version="[4.25.0, 5]" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\$configuration$\EPiServer.ContentApi.Forms.dll" target="lib\net461\" />
+    <file src="bin\$configuration$\EPiServer.ContentApi.Forms.xml" target="lib\net461\" />
+    <file src="Scripts\FormRenderingService.js" target="content\Scripts\EPiServer.ContentApi.Forms" />
+  </files>
+</package>

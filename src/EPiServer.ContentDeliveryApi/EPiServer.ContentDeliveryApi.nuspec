@@ -1,0 +1,26 @@
+﻿<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>EPiServer.ContentDeliveryApi</id>
+    <version>$version$</version>
+    <title>EPiServer.ContentDeliveryApi</title>
+    <authors>Episerver AB</authors>
+    <owners>Episerver</owners>
+    <licenseUrl>http://www.episerver.com/eula/</licenseUrl>
+    <iconUrl>http://www.episerver.com/Framework/Styles/Images/Products/Integration.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <summary>Episerver Content Delivery</summary>
+    <copyright>Copyright Episerver 2018</copyright>
+    <tags>Episerver Content Delivery</tags>
+    <description>Episerver Content Delivery</description>
+    <dependencies>
+      <group targetFramework="$TargetFramework$">
+        <dependency id="EPiServer.ContentDeliveryApi.Cms" version="[$version$, 3)" />
+        <dependency id="EPiServer.ContentDeliveryApi.OAuth" version="[2.6.0, 3)" />
+      </group>
+    </dependencies>
+  </metadata>
+
+  <files>
+  </files>
+</package>
